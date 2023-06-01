@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function page() {
+export default function List() {
   return (
     <div>
       <h4 className="title">상품목록</h4>
