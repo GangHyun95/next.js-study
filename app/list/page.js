@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 export default function List() {
   let products = ["Tomatoes", "Pasta", "Coconut"];
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState([0, 0, 0]);
   return (
     <div>
       <h4 className="title">상품목록</h4>
@@ -12,13 +12,24 @@ export default function List() {
         <div className="food" key={i}>
           <img src={`food${i}.png`} className="food-img" />
           <h4>{product} $40</h4>
-          <span>{quantity}</span>
+          <span>{quantity[i]}</span>
           <button
             onClick={() => {
-              setQuantity((prev) => prev + 1);
+              let copy = [...quantity];
+              copy[i]++;
+              setQuantity(copy);
             }}
           >
             +
+          </button>
+          <button
+            onClick={() => {
+              let copy = [...quantity];
+              copy[i]--;
+              setQuantity(copy);
+            }}
+          >
+            -
           </button>
         </div>
       ))}
